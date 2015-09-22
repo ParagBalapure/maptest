@@ -80,6 +80,8 @@ namespace test_geolocation
                 WidthRequest = 800,
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
+            _map = map;
+
             Button b = new Button { Text = "GetPosition" };
 
             b.Clicked += (sender, ea) => GetPosition1 ();
@@ -147,7 +149,7 @@ namespace test_geolocation
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debugger.Break ();
+                //System.Diagnostics.Debugger.Break ();
                 if (DEBUG) {
                     var notificator = DependencyService.Get<IToastNotificator> ();
                     var tapped = await notificator.Notify (ToastNotificationType.Info, 
@@ -156,6 +158,7 @@ namespace test_geolocation
             }
         }
 
+        int counter = 1;
         void UpdatePosition(XLabs.Platform.Services.Geolocation.Position result)
             {
 
@@ -166,7 +169,7 @@ namespace test_geolocation
                             {
                 var position = new Xamarin.Forms.Maps.Position(result.Latitude, result.Longitude);
 
-                Device.BeginInvokeOnMainThread( async () =>
+                Device.BeginInvokeOnMainThread( () =>
                                         {
                                             try
                                             {
@@ -181,6 +184,7 @@ namespace test_geolocation
 //                                                }
                                                 //else
                                                 {
+                                position = new Xamarin.Forms.Maps.Position (position.Latitude + .01*counter++, position.Longitude);
                                                     _map.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1)));
                                                    var pin = new Pin
                                                     {
@@ -195,13 +199,18 @@ namespace test_geolocation
                                             {
                                                 if (DEBUG) {
                                                     var notificator = DependencyService.Get<IToastNotificator> ();
-                                                    var tapped = await notificator.Notify (ToastNotificationType.Info, 
+                                                    var tapped = notificator.Notify (ToastNotificationType.Info, 
                                     "GeoLocator", "GetPositionAsyncContinueWithError: "+e.InnerException.ToString(), TimeSpan.FromSeconds (3)); 
                                                 }
                                             }
                                         });
                                 }
             catch (Exception e) {
+                if (DEBUG) {
+                    var notificator = DependencyService.Get<IToastNotificator> ();
+                    var tapped = notificator.Notify (ToastNotificationType.Info, 
+                        "GeoLocator", "GetPositionAsyncContinueWithError: "+e.InnerException.ToString(), TimeSpan.FromSeconds (3)); 
+                }                
             }
            
             }
