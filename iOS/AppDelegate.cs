@@ -16,6 +16,8 @@ namespace maptest.iOS
     [Register ("AppDelegate")]
     public partial class AppDelegate : XFormsApplicationDelegate
     {
+        //CLLocationManager manager = new CLLocationManager();
+
         public override bool FinishedLaunching (UIApplication app, NSDictionary options)
         {
             this.SetIoc();
@@ -54,11 +56,15 @@ namespace maptest.iOS
         //resolverContainer.Register<IDevice>(t => AndroidDevice.CurrentDevice);
         //Resolver.SetResolver(resolverContainer.GetResolver());
 
+            Console.WriteLine ("Here");
+            Util util = new Util ();
+            util.EnableLocationServices ();
 
-            var manager = new CLLocationManager();
-            manager.AuthorizationChanged += (sender, args) => {
-                Console.WriteLine ("Authorization changed to: {0}", args.Status);
-            };
+
+
+            //manager.AuthorizationChanged += (sender, args) => {
+               // Console.WriteLine ("Authorization changed to: {0}", args.Status);
+            //};
             //if (UIDevice.CurrentDevice.CheckSystemVersion(8,0))
             //    manager.RequestWhenInUseAuthorization();
 

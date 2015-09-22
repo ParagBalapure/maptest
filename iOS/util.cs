@@ -11,13 +11,15 @@ namespace maptest.iOS
 {
     public class Util : test_geolocation.IUtil
     {
+        static CLLocationManager manager;
+
         public Util ()
         {
         }
 
         public void EnableLocationServices()
         {
-            var manager = new CLLocationManager();
+            manager = new CLLocationManager();
             manager.AuthorizationChanged += (sender, args) => {
                 Console.WriteLine ("Authorization changed to: {0}", args.Status);
             };
