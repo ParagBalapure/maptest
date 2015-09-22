@@ -147,6 +147,7 @@ namespace test_geolocation
             }
             catch (Exception e)
             {
+                System.Diagnostics.Debugger.Break ();
                 if (DEBUG) {
                     var notificator = DependencyService.Get<IToastNotificator> ();
                     var tapped = await notificator.Notify (ToastNotificationType.Info, 
