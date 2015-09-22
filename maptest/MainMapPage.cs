@@ -22,7 +22,7 @@ namespace test_geolocation
     public class MainMapPage : ContentPage
     {
 
-        bool DEBUG = true;
+        bool DEBUG = false;
 
         private IGeolocator _geolocator;
         private IDevice _device;
@@ -76,16 +76,23 @@ namespace test_geolocation
                 MapSpan.FromCenterAndRadius(
                     new Xamarin.Forms.Maps.Position(37,-122), Distance.FromMiles(0.3))) {
                 IsShowingUser = true,
-                HeightRequest = 1000,
+                HeightRequest = 600,
                 WidthRequest = 800,
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
+            Button b = new Button { Text = "GetPosition" };
+
+            b.Clicked += (sender, ea) => GetPosition1 ();
+
             var stack = new StackLayout { Spacing = 0 };
             stack.BackgroundColor = Color.White;
             stack.Children.Add(map);
+            stack.Children.Add (b);
             Content = stack;
 
-            GetPosition1();
+
+
+            //GetPosition1();
 
             #if false
             try
@@ -110,10 +117,13 @@ namespace test_geolocation
             }
             #endif
         }
-            
-
+           
         private async Task GetPosition1()
         {
+
+            var service = DependencyService.Get<IUtil> ();
+            service.EnableLocationServices();
+
             try
             {
                 _cancelSource = new CancellationTokenSource();
@@ -131,7 +141,7 @@ namespace test_geolocation
 				
 					
 				//  Get current position
-                await Geolocator.GetPositionAsync(timeout: 10000, cancelToken: _cancelSource.Token, includeHeading: true)
+                await Geolocator.GetPositionAsync(timeout: 10000, cancelToken: _cancelSource.Token, includeHeading: false)
                     .ContinueWith(t => UpdatePosition(t.Result));
 
             }
@@ -235,6 +245,12 @@ namespace test_geolocation
             base.OnDisappearing();
             GC.Collect();
         }
+
+    }
+
+    public interface IUtil
+    {
+        void EnableLocationServices();
 
     }
 }

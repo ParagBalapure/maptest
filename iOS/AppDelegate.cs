@@ -9,6 +9,7 @@ using XLabs.Ioc;
 using XLabs.Platform.Mvvm;
 using XLabs.Platform.Services.Geolocation;
 using XLabs.Forms;
+using CoreLocation;
 
 namespace maptest.iOS
 {
@@ -52,6 +53,14 @@ namespace maptest.iOS
 
         //resolverContainer.Register<IDevice>(t => AndroidDevice.CurrentDevice);
         //Resolver.SetResolver(resolverContainer.GetResolver());
+
+
+            var manager = new CLLocationManager();
+            manager.AuthorizationChanged += (sender, args) => {
+                Console.WriteLine ("Authorization changed to: {0}", args.Status);
+            };
+            //if (UIDevice.CurrentDevice.CheckSystemVersion(8,0))
+            //    manager.RequestWhenInUseAuthorization();
 
     }
     }

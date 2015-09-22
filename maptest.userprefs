@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="iOS/maptest.iOS.csproj">
+﻿<Properties StartupItem="iOS/maptest.iOS.csproj" RefactoringSettings.EnableRefactorings="True" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.8.3" />
   <MonoDevelop.Ide.Workbench>
     <Files>
