@@ -76,15 +76,13 @@ namespace test_geolocation
                 MapSpan.FromCenterAndRadius(
                     new Xamarin.Forms.Maps.Position(37,-122), Distance.FromMiles(0.3))) {
                 IsShowingUser = true,
-                HeightRequest = 600,
-                WidthRequest = 800,
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
             _map = map;
 
             View toolbar = CreateTopMenu();
-            toolbar.WidthRequest = 1000;
-            toolbar.HeightRequest = 50;
+            //toolbar.WidthRequest = 1000;
+            //toolbar.HeightRequest = 50;
             toolbar.BackgroundColor = Color.White;
 
             Button b = new Button { Text = "GetPosition" };
@@ -273,7 +271,7 @@ namespace test_geolocation
 
 
             topMenuList = new List<ToolbarItem> ();
-            topMenu = new StackLayout {BackgroundColor = Color.White, Orientation = StackOrientation.Horizontal, HorizontalOptions=LayoutOptions.FillAndExpand, Padding = new Thickness (30,20)};
+            topMenu = new StackLayout {BackgroundColor = Color.White, Orientation = StackOrientation.Horizontal, HorizontalOptions=LayoutOptions.FillAndExpand, Padding = new Thickness (30,30)};
 
             topMenuList.Add(new ToolbarItem {
                 Text = "Search",
@@ -316,6 +314,7 @@ namespace test_geolocation
                 img.Source = item.Icon;
                 img.WidthRequest = 32;
                 img.HeightRequest = 32;
+                img.HorizontalOptions = LayoutOptions.EndAndExpand;
                 topMenu.Children.Add (img);
             }
 
@@ -327,7 +326,7 @@ namespace test_geolocation
             StackLayout layout = new StackLayout {
                 BackgroundColor = Color.Red,
                 WidthRequest = 800,
-                HorizontalOptions = LayoutOptions.Fill,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 Orientation = StackOrientation.Vertical,
                 Children = {topMenu, box}
             };
