@@ -82,12 +82,18 @@ namespace test_geolocation
             };
             _map = map;
 
+            View toolbar = CreateTopMenu();
+            toolbar.WidthRequest = 1000;
+            toolbar.HeightRequest = 50;
+            toolbar.BackgroundColor = Color.White;
+
             Button b = new Button { Text = "GetPosition" };
 
             b.Clicked += (sender, ea) => GetPosition1 ();
 
             var stack = new StackLayout { Spacing = 0 };
             stack.BackgroundColor = Color.White;
+            stack.Children.Add (toolbar);
             stack.Children.Add(map);
             stack.Children.Add (b);
             Content = stack;
@@ -255,6 +261,84 @@ namespace test_geolocation
             base.OnDisappearing();
             GC.Collect();
         }
+
+        static List<ToolbarItem> topMenuList; 
+        static StackLayout topMenu; 
+
+        public static View CreateTopMenu()
+        {
+            //NavigationPage.SetTitleIcon (page, "Icon.png");
+
+            //NavigationPage.SetHasNavigationBar (page, false);
+
+
+            topMenuList = new List<ToolbarItem> ();
+            topMenu = new StackLayout {BackgroundColor = Color.White, Orientation = StackOrientation.Horizontal, HorizontalOptions=LayoutOptions.FillAndExpand, Padding = new Thickness (30,20)};
+
+            topMenuList.Add(new ToolbarItem {
+                Text = "Search",
+                Icon = "search_blue.png",
+                Order = ToolbarItemOrder.Primary,
+                Command = new Command(() => {})
+            });
+
+
+            topMenuList.Add(new ToolbarItem {
+                Text = "Wall",
+                Icon = "newspaper_gray.png",
+                Order = ToolbarItemOrder.Primary,
+                Command = new Command(() => {})
+            });
+
+            topMenuList.Add(new ToolbarItem {
+                Text = "Mail",
+                Icon = "envelope_gray.png",
+                Order = ToolbarItemOrder.Primary,
+                Command = new Command(() => {})
+            });
+
+            topMenuList.Add(new ToolbarItem {
+                Text = "Map",
+                Icon = "map_marker_gray.png",
+                Order = ToolbarItemOrder.Primary,
+                Command = new Command(() => {})
+            });
+
+            topMenuList.Add(new ToolbarItem {
+                Text = "Settings",
+                Icon = "bars_gray.png",
+                Order = ToolbarItemOrder.Primary,
+                Command = new Command(() =>  {})
+            });
+
+            foreach (var item in topMenuList) {
+                Image img = new Image ();
+                img.Source = item.Icon;
+                img.WidthRequest = 32;
+                img.HeightRequest = 32;
+                topMenu.Children.Add (img);
+            }
+
+            topMenu.Spacing = 20;
+            topMenu.WidthRequest = 800;
+
+            BoxView box = new BoxView { HeightRequest = 5, BackgroundColor = Color.Blue, WidthRequest = 1000 };
+
+            StackLayout layout = new StackLayout {
+                BackgroundColor = Color.Red,
+                WidthRequest = 800,
+                HorizontalOptions = LayoutOptions.Fill,
+                Orientation = StackOrientation.Vertical,
+                Children = {topMenu, box}
+            };
+
+            return layout;
+
+            // Display refresh icon while performing searches
+            //MenuMasterPage.refreshToolbarItem = new ToolbarItem("Refresh", "ic_autorenew_black_24dp.png",  async () => {});
+            //page.ToolbarItems.Add(refreshToolbarItem);
+        }
+
 
     }
 
