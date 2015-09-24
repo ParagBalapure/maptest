@@ -133,6 +133,11 @@
     <BundleResource Include="Resources\Icon-Small-40.png" />
     <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <BundleResource Include="Resources\Icon-Small-40%403x.png" />
+    <BundleResource Include="Resources\bars_gray.png" />
+    <BundleResource Include="Resources\map_marker_gray.png" />
+    <BundleResource Include="Resources\envelope_gray.png" />
+    <BundleResource Include="Resources\newspaper_gray.png" />
+    <BundleResource Include="Resources\search_blue.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

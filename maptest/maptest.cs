@@ -1,7 +1,6 @@
 ﻿using System;
 
 using Xamarin.Forms;
-using test_geolocation;
 
 namespace maptest
 {
@@ -11,9 +10,9 @@ namespace maptest
         {
             // The root page of your application
 
-
-            MainPage = new MainMapPage ();
-
+       
+            MainPage = new NavigationPage(new MainMapPage ());
+            MainPage.Navigation.
 //            MainPage = new ContentPage {
 //                Content = new StackLayout {
 //                    VerticalOptions = LayoutOptions.Center,

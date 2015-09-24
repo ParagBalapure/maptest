@@ -23,6 +23,7 @@ namespace maptest.iOS
             this.SetIoc();
             global::Xamarin.Forms.Forms.Init ();
             Xamarin.FormsMaps.Init();
+            //global::Xamarin.Forms.SetTitleBarVisibility(AndroidTitleBarVisibility.Never);
 
             // Code for starting up the Xamarin Test Cloud Agent
             #if ENABLE_TEST_CLOUD

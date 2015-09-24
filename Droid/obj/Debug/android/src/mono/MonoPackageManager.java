@@ -81,10 +81,17 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		"maptest.Droid.dll",
 		"Xamarin.Android.Support.v4.dll",
+		"Xamarin.GooglePlayServices.Base.dll",
+		"Xamarin.GooglePlayServices.Maps.dll",
+		"Xamarin.Android.Support.v7.AppCompat.dll",
+		"Xamarin.Android.Support.v7.MediaRouter.dll",
 		"Xamarin.Forms.Platform.Android.dll",
 		"FormsViewGroup.dll",
 		"Xamarin.Forms.Core.dll",
 		"Xamarin.Forms.Xaml.dll",
+		"Xamarin.Forms.Platform.dll",
+		"Xamarin.Forms.Maps.Android.dll",
+		"Xamarin.Forms.Maps.dll",
 		"maptest.dll",
 		"System.Collections.Concurrent.dll",
 		"System.Collections.dll",
@@ -135,7 +142,6 @@ class MonoPackageManager_Resources {
 		"XLabs.Platform.dll",
 		"XLabs.Core.dll",
 		"ExifLib.dll",
-		"Xamarin.Forms.Maps.dll",
 		"Toasts.Forms.Plugin.Abstractions.dll",
 	};
 	public static final String[] Dependencies = new String[]{

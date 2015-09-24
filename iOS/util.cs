@@ -2,14 +2,14 @@
 using Xamarin.Forms;
 using CoreLocation;
 using UIKit;
-using test_geolocation;
+using maptest;
 using maptest.iOS;
 
 [assembly: Dependency (typeof (Util))]
 
 namespace maptest.iOS
 {
-    public class Util : test_geolocation.IUtil
+    public class Util : maptest.IUtil
     {
         static CLLocationManager manager;
 
