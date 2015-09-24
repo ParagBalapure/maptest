@@ -15,6 +15,10 @@ namespace maptest
         static StackLayout topMenu; 
         static Dictionary<Image,ToolbarItem> toolbarItems = new Dictionary<Image, ToolbarItem>();
 
+        static int wallNewMessageCount = 15;
+        static int newMessageCount = 5;
+
+
         public Toolbar()
         {
             if (_toolbar != null) {
@@ -61,6 +65,7 @@ namespace maptest
                 Command = new Command(() =>  {})
             });
 
+            #if ORIGINAL
             foreach (var item in topMenuList) {
 
                 ContentView container = new ContentView ();
@@ -84,6 +89,71 @@ namespace maptest
 
                 toolbarItems.Add (img, item);        //  Hold on to toolbatitem so we can find it
             }
+            #endif
+
+
+            foreach (var item in topMenuList) {
+
+                ContentView container = new ContentView ();
+                ContentView view = new ContentView ();
+                //ContentView view1 = new ContentView ();
+                Image img = new Image ();
+                img.Source = item.Icon;
+                img.WidthRequest = 24;
+                img.HeightRequest = 24;
+                img.HorizontalOptions = LayoutOptions.EndAndExpand;
+                img.VerticalOptions = LayoutOptions.CenterAndExpand;
+                img.GestureRecognizers.Add (new TapGestureRecognizer (OnTapGestureRecognizerTapped));
+                view.HorizontalOptions = LayoutOptions.EndAndExpand;
+                view.VerticalOptions = LayoutOptions.CenterAndExpand;
+                view.Padding = new Thickness (0, 0, 0, 0);
+
+                RelativeLayout ss = new RelativeLayout ();
+                //ss.Orientation = StackOrientation.Horizontal;
+                Label lbl = new Label ();
+                if (item.Text == "Wall")
+                    lbl.Text = wallNewMessageCount.ToString ();
+                if (item.Text == "Messages")
+                    lbl.Text = newMessageCount.ToString ();
+                lbl.WidthRequest = 10;
+                lbl.HeightRequest = 10;
+
+                lbl.FontSize = 10;
+                lbl.BackgroundColor = Color.FromRgb (41, 182, 246);
+
+                //lbl.HorizontalOptions = LayoutOptions.EndAndExpand;
+                //lbl.VerticalOptions = LayoutOptions.CenterAndExpand;
+                //view1.Content = lbl;
+                ss.Children.Add (img, 
+                    Constraint.Constant (24), 
+                    Constraint.Constant (24),
+                    Constraint.RelativeToParent ((parent) => {
+                        return 24;
+                    }),
+                    Constraint.RelativeToParent ((parent) => {
+                        return 24;
+                    }));
+                if (item.Text == "Wall" || item.Text == "Messages") {
+                    ss.Children.Add (lbl, 
+                        Constraint.Constant (16), 
+                        Constraint.Constant (16),
+                        Constraint.RelativeToParent ((parent) => {
+                            return 12;
+                        }),
+                        Constraint.RelativeToParent ((parent) => {
+                            return 12;
+                        }));
+                }
+                view.Content = ss;
+                container.Padding = new Thickness (0, 0, 0, 5);
+                container.HorizontalOptions = LayoutOptions.EndAndExpand;
+                container.VerticalOptions = LayoutOptions.CenterAndExpand;
+                container.Content = view;
+                topMenu.Children.Add (container);
+                toolbarItems.Add (img, item);        //  Hold on to toolbatitem so we can find it
+            }
+
+
 
             topMenu.Spacing = 20;
             //topMenu.WidthRequest = 800;
@@ -109,7 +179,7 @@ namespace maptest
 
         void OnTapGestureRecognizerTapped(View sender, Object o) {
             var img = (Image)sender;
-            ContentView parent = (ContentView)img.ParentView;
+            ContentView parent = (ContentView)img.ParentView.ParentView;
             ClearButtons();
             parent.BackgroundColor = Color.Red; 
             ToolbarItem item = toolbarItems [img];
