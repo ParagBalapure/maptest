@@ -117,6 +117,10 @@ namespace maptest
                     lbl.Text = newMessageCount.ToString ();
                 lbl.WidthRequest = 10;
                 lbl.HeightRequest = 10;
+                lbl.XAlign = TextAlignment.Center;
+                lbl.YAlign = TextAlignment.Center;
+                //lbl.HorizontalOptions = LayoutOptions.CenterAndExpand;
+                //lbl.VerticalOptions = LayoutOptions.CenterAndExpand;
 
                 lbl.FontSize = 10;
                 lbl.BackgroundColor = Color.FromRgb (41, 182, 246);
@@ -135,13 +139,13 @@ namespace maptest
                     }));
                 if (item.Text == "Wall" || item.Text == "Messages") {
                     ss.Children.Add (lbl, 
-                        Constraint.Constant (16), 
-                        Constraint.Constant (16),
+                        Constraint.Constant (48), 
+                        Constraint.Constant (24),
                         Constraint.RelativeToParent ((parent) => {
-                            return 12;
+                            return 14;
                         }),
                         Constraint.RelativeToParent ((parent) => {
-                            return 12;
+                            return 14;
                         }));
                 }
                 view.Content = ss;
