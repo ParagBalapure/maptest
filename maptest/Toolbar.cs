@@ -165,7 +165,7 @@ namespace maptest
             BoxView box = new BoxView { HeightRequest = 4, BackgroundColor = Color.FromRgb(41,182,246), HorizontalOptions = LayoutOptions.FillAndExpand };
 
             StackLayout layout = new StackLayout {
-                //BackgroundColor = Color.Red,
+                BackgroundColor = Color.White,
                 //WidthRequest = 800,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Center,
