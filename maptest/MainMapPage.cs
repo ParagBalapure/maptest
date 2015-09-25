@@ -71,7 +71,7 @@ namespace maptest
 
         public MainMapPage()
 		{
-            //NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasNavigationBar(this, false);
 
             var map = new Map(
                 MapSpan.FromCenterAndRadius(
@@ -82,7 +82,7 @@ namespace maptest
             _map = map;
 
             //View toolbar = CreateTopMenu();
-            View toolbar = new Toolbar();
+            View toolbar = new Toolbar(this);
 
             //toolbar.WidthRequest = 1000;
             //toolbar.HeightRequest = 50;

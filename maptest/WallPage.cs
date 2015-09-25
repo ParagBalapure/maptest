@@ -10,7 +10,7 @@ namespace maptest
         {
             NavigationPage.SetHasNavigationBar(this, false);
 
-            View toolbar = new Toolbar();
+            View toolbar = new Toolbar(this);
 
             Content = new StackLayout { 
                 Children = {

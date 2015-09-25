@@ -19,7 +19,7 @@ namespace maptest
         static int newMessageCount = 5;
 
 
-        public Toolbar()
+        public Toolbar(ContentPage page)
         {
             if (_toolbar != null) {
                 Content = _toolbar.Content;
@@ -33,7 +33,7 @@ namespace maptest
                 Text = "Search",
                 Icon = "search_blue.png",
                 Order = ToolbarItemOrder.Primary,
-                Command = new Command(() => {Navigation.PushAsync (new SearchPage ());})
+                Command = new Command(() => {Navigation.PushAsync (new Test.TestPage ());})
             });
 
 

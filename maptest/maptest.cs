@@ -12,7 +12,6 @@ namespace maptest
 
        
             MainPage = new NavigationPage(new MainMapPage ());
-            MainPage.Navigation.
 //            MainPage = new ContentPage {
 //                Content = new StackLayout {
 //                    VerticalOptions = LayoutOptions.Center,
