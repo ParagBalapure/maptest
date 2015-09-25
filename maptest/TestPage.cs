@@ -40,7 +40,7 @@ namespace Test
 
             var _label1 = new Label
             {
-                Text = "MUUV",
+                Text = "MUUVer",
                 FontSize = 16,
                 FontAttributes = FontAttributes.Bold,
                 FontFamily = "Helvetica Neue,Helvetica,Arial",
@@ -54,7 +54,7 @@ namespace Test
             var _label2 = new Label
             {
                 Text = "Friends Nearby",
-                FontSize = 18,
+                FontSize = 16,
                 FontFamily = "Helvetica Neue,Helvetica,Arial",
                 HeightRequest = 40,
                 XAlign = TextAlignment.Start,
@@ -68,7 +68,7 @@ namespace Test
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 BackgroundColor = Color.FromHex ("39f"),
-                Padding = new Thickness(0,-5,0,0),
+                Padding = new Thickness(0,-7,0,0),
                 Children = {_header1}
             };
 
@@ -123,17 +123,23 @@ namespace Test
 
             var News = new List<SearchResultsModel> ();
             News.Add (new SearchResultsModel {
-                Title = "Title1",
+                Name = "Laura, 25",
+                LastActive = "Last active: 5 minutes ago",
+                Distance = "Distance: .5 miles",
                 NewsURL = "www.ibm.com",
                 MainImageURL = "http://testapp.letsmuuv.com/assets/img/users/user-3.jpg"
             });
             News.Add (new SearchResultsModel {
-                Title = "Title2",
+                Name = "Jason, 35",
+                LastActive = "Last active: 3 hours ago",
+                Distance = "Distance: 2 miles",
                 NewsURL = "www.ibm.com",
                 MainImageURL = "http://testapp.letsmuuv.com/assets/img/users/user-3.jpg"
             });
             News.Add (new SearchResultsModel {
-                Title = "Title3",
+                Name = "Bill, 38",
+                LastActive = "Last active: 5 days ago",
+                Distance = "Distance: 5 miles",
                 NewsURL = "www.ibm.com",
                 MainImageURL = "http://testapp.letsmuuv.com/assets/img/users/user-3.jpg"
             });
@@ -148,9 +154,27 @@ namespace Test
 
                     // Create views with bindings for displaying each property.
                     Label titleLabel = new Label ();
-                    titleLabel.SetBinding (Label.TextProperty, "Title");
+                    titleLabel.SetBinding (Label.TextProperty, "Name");
                     titleLabel.FontSize = 16;
                     titleLabel.FontFamily = "Helvetica Neue,Helvetica,Arial";
+                    titleLabel.TextColor = Color.FromHex ("39f");
+
+                    Label lastActive = new Label();
+                    lastActive.SetBinding (Label.TextProperty, "LastActive");
+                    lastActive.FontSize = 12;
+                    lastActive.FontFamily = "Helvetica Neue,Helvetica,Arial";
+
+                    Label distance = new Label();
+                    distance.SetBinding (Label.TextProperty, "Distance");
+                    distance.FontSize = 12;
+                    distance.FontFamily = "Helvetica Neue,Helvetica,Arial";
+
+                    StackLayout activeAndDistance = new StackLayout {
+                        Orientation=StackOrientation.Vertical,
+                        Padding = new Thickness (0,0,0,0),
+                        Children = {lastActive, distance}
+                    };
+
 
 
                     Image picture = new Image();
@@ -165,11 +189,14 @@ namespace Test
 
                     return new ViewCell {
                         View = new StackLayout {
-                            Padding = new Thickness (0),
+                            Padding = new Thickness (20,0,0,0),
                             Orientation = StackOrientation.Vertical,
                             Children = {
                                 picture,
                                 titleLabel,
+                                activeAndDistance,
+                                //lastActive,
+                                //distance,
                                 thumbs
                             }
                         }
@@ -194,7 +221,10 @@ namespace Test
 
     public class SearchResultsModel
     {
-        public string Title { get; set; }
+        public string Name { get; set; }
+        public int Age {get;set;}
+        public string LastActive { get; set;}
+        public string Distance { get; set;}
         public string NewsURL { get; set; }
         public string MainImageURL { get; set; }
     }
