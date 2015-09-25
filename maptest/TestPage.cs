@@ -24,29 +24,69 @@ namespace Test
             View toolbar = new maptest.Toolbar(this);
             SearchResults searchResults = new SearchResults ();
 
-                var _header = new Label
+                var _header1 = new Label
                 {
-                    Text = "   Find Friends   ",
-                    FontSize = 24,
+                    Text = "   FIND FRIENDS   ",
+                    FontSize = 20,
                     FontFamily = "Helvetica Neue,Helvetica,Arial",
+                    XAlign = TextAlignment.Start,
+                    YAlign = TextAlignment.Center,
+                WidthRequest = 1000,
                     HeightRequest = 40,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
                     BackgroundColor = Color.FromHex ("39f"), 
-                    TextColor = Color.White
+                    TextColor = Color.White,
                 };
 
-                StackLayout header = new StackLayout 
-                {
-                    Orientation = StackOrientation.Horizontal,
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    BackgroundColor = Color.FromHex ("39f"),
-                    Padding = new Thickness(0),
-                    Children = {_header}
-                };
+            var _label1 = new Label
+            {
+                Text = "MUUV",
+                FontSize = 16,
+                FontAttributes = FontAttributes.Bold,
+                FontFamily = "Helvetica Neue,Helvetica,Arial",
+                HeightRequest = 40,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                //BackgroundColor = Color.FromHex ("39f"), 
+                TextColor = Color.Green
+            };
+
+            var _label2 = new Label
+            {
+                Text = "Friends Nearby",
+                FontSize = 18,
+                FontFamily = "Helvetica Neue,Helvetica,Arial",
+                HeightRequest = 40,
+                XAlign = TextAlignment.Start,
+                //BackgroundColor = Color.Black, 
+                TextColor = Color.Black
+            };
+
+
+            StackLayout header1 = new StackLayout 
+            {
+                Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = Color.FromHex ("39f"),
+                Padding = new Thickness(0,-5,0,0),
+                Children = {_header1}
+            };
+
+            StackLayout header2 = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                BackgroundColor = Color.White,
+                Padding = new Thickness(25,0,0,0),
+                Children = {_label1, _label2}
+            };
+
+
 
                 this.Content = new ContentView
                 {
-                    BackgroundColor = Color.Red,
-                    Padding = new Thickness (0),
+                    BackgroundColor = Color.White,
+                //Padding = new Thickness (0,-5,0,0),
                     Content = new StackLayout
                     {
                         //BackgroundColor = new Color(200,200,200,1),
@@ -55,8 +95,9 @@ namespace Test
                         Children = 
                         {
                             toolbar,
-                            header,
-                            //searchResults.View
+                            header1,
+                            header2,
+                            searchResults.View
                         }
                         }
                 };
