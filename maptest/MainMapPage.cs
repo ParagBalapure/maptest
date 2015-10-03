@@ -68,7 +68,7 @@ namespace maptest
             
 
         Xamarin.Forms.Maps.Map _map;
-
+		Label lblCount;
         public MainMapPage()
 		{
             NavigationPage.SetHasNavigationBar(this, false);
@@ -89,6 +89,7 @@ namespace maptest
             toolbar.BackgroundColor = Color.White;
 
             Button b = new Button { Text = "GetPosition" };
+			lblCount= new Label { Text = "Count" };
 
             b.Clicked += (sender, ea) => GetPosition1 ();
 
@@ -97,6 +98,7 @@ namespace maptest
             stack.Children.Add (toolbar);
             stack.Children.Add(map);
             stack.Children.Add (b);
+			stack.Children.Add (lblCount);
             Content = stack;
 
 
@@ -147,7 +149,8 @@ namespace maptest
 					bool tapped = await notificator.Notify(ToastNotificationType.Info, 
 					"GetPosition", "Getting Position", TimeSpan.FromSeconds(2));
 				}
-				
+
+				lblCount.Text= DependencyService.Get<IStepCounter>().GetData();
 					
 				//  Get current position
                 await Geolocator.GetPositionAsync(timeout: 10000, cancelToken: _cancelSource.Token, includeHeading: false)

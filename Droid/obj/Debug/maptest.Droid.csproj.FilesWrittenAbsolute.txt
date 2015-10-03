@@ -35,3 +35,6 @@
 /Users/bert/Projects/bertbeck/maptest/Droid/bin/Debug/Xamarin.Android.Support.v7.MediaRouter.dll
 /Users/bert/Projects/bertbeck/maptest/Droid/bin/Debug/Xamarin.Forms.Platform.dll
 /Users/bert/Projects/bertbeck/maptest/Droid/bin/Debug/Xamarin.Forms.Maps.Android.dll
+/Users/esensemac10/maptest/Droid/obj/Debug/MonoAndroid,Version=v5.0.AssemblyAttribute.cs
+/Users/esensemac10/maptest/Droid/obj/Debug/maptest.Droid.dll
+/Users/esensemac10/maptest/Droid/obj/Debug/maptest.Droid.dll.mdb
