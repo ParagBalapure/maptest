@@ -4,7 +4,7 @@ namespace maptest
 {
 	public interface IStepCounter
 	{
-		string GetData();
+		string GetData(DateTime FromDate,DateTime ToDate);
 	}
 }
 

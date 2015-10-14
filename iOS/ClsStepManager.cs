@@ -13,41 +13,46 @@ namespace maptest.iOS
 {
 	public class ClsStepManager:IStepCounter
 	{
-		public void  MotionPrivacyManager ()
-		{
-			if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
-				pedometer = new CMPedometer ();
-				motionStatus = CMPedometer.IsStepCountingAvailable ? "Available" : "Not available";
-			} else {
-				stepCounter = new CMStepCounter ();
-				motionManger = new CMMotionManager ();
-				motionStatus = motionManger.DeviceMotionAvailable ? "Available" : "Not available";
-			}
-		}
+		//		public void  MotionPrivacyManager ()
+		//		{
+		////			if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
+		////				pedometer = new CMPedometer ();
+		////				motionStatus = CMPedometer.IsStepCountingAvailable ? "Available" : "Not available";
+		////			} else {
+		////				stepCounter = new CMStepCounter ();
+		////				motionManger = new CMMotionManager ();
+		////				motionStatus = motionManger.DeviceMotionAvailable ? "Available" : "Not available";
+		////			}
+		//		}
 		CMStepCounter stepCounter = new CMStepCounter ();
 		string motionStatus = "Indeterminate";
 
 
 		CMMotionManager motionManger; // before iOS 8.0
-		CMPedometer pedometer = new CMPedometer (); // since iOS 8.0
+		//		CMPedometer pedometer = new CMPedometer (); // since iOS 8.0
 		//NSDate FromDate = DateTimeToNSDate (DateTime.Now.AddMonths (-1));
-		NSDate FromDate = DateTimeToNSDate (DateTime.Now.AddMonths(-1));
-		NSDate ToDate = DateTimeToNSDate (DateTime.Now);
+		//NSDate FromDate = DateTimeToNSDate (DateTime.Now.AddMonths(-1));
+		//NSDate ToDate = DateTimeToNSDate (DateTime.Now);
 		//NSDate k = DateTimeToNSDate (d);
 		nint steps;
 		NSOperationQueue Q = NSOperationQueue.MainQueue;
-		public string GetData ()
+		public string GetData (DateTime FromDate,DateTime ToDate)
 		{
-			RequestAccess ();
+			RequestAccess (FromDate,ToDate);
 			return steps.ToString();
 
 		}
-		public Task RequestAccess ()
+		public Task RequestAccess (DateTime FromDate,DateTime ToDate)
 		{
 			//				var yesterday = NSDate.FromTimeIntervalSinceNow (-60 * 60 * 24);
 			//
-
+			NSDate FromNSDate = DateTimeToNSDate (FromDate);
+			NSDate ToNSDate = DateTimeToNSDate (ToDate);
 			if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
+				if (!CMStepCounter.IsStepCountingAvailable)
+					return Task.FromResult<object> (null);
+			}
+			if (UIDevice.CurrentDevice.CheckSystemVersion (7, 0)) {
 				if (!CMStepCounter.IsStepCountingAvailable)
 					return Task.FromResult<object> (null);
 			}
@@ -62,7 +67,7 @@ namespace maptest.iOS
 			//	Task t= stepCounter.QueryStepCountAsync (k, NSDate.Now, NSOperationQueue.CurrentQueue).ContinueWith (StepQueryContinuation);
 
 
-			return stepCounter.QueryStepCountAsync (FromDate,ToDate,Q)
+			return stepCounter.QueryStepCountAsync (FromNSDate,ToNSDate,Q)
 				.ContinueWith(
 					//
 					//					if (t.IsFaulted || t.IsCanceled)
