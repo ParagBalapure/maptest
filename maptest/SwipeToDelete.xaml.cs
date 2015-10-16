@@ -12,7 +12,7 @@ namespace maptest
 		{
 			InitializeComponent ();		
 			items = new ObservableCollection<string> { "Parag", "Pankaj", "Bert", "Sarang", "Paresh","Suresh","Trushant","Prashant" };
-			//listView.ItemsSource = items;
+
 			listView.SetBinding (ListView.ItemsSourceProperty, new Binding ("."));
 			listView.BindingContext = items;
 		}
@@ -30,7 +30,7 @@ namespace maptest
 
 		public void OnDelete (object sender, EventArgs e) {
 			var mi = ((MenuItem)sender);
-			//DisplayAlert("Delete Context Action", mi.CommandParameter + " delete context action", "OK");
+			DisplayAlert("Delete Context Action", mi.CommandParameter + " delete context action", "OK");
 
 			Debug.WriteLine ("delete " + mi.CommandParameter.ToString ());
 			items.Remove (mi.CommandParameter.ToString());
