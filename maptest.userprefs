@@ -1,18 +1,18 @@
 ﻿<Properties StartupItem="iOS/maptest.iOS.csproj" RefactoringSettings.EnableRefactorings="True" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.8.4" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="maptest/maptest.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone5s.8.4" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="maptest/Toolbar.cs">
     <Files>
-      <File FileName="maptest/maptest.cs" Line="26" Column="10" />
-      <File FileName="maptest/MainMapPage.cs" Line="1" Column="1" />
+      <File FileName="maptest/maptest.cs" Line="1" Column="1" />
+      <File FileName="maptest/MainMapPage.cs" Line="285" Column="1" />
       <File FileName="iOS/AppDelegate.cs" Line="1" Column="1" />
       <File FileName="iOS/util.cs" Line="1" Column="1" />
       <File FileName="iOS/Info.plist" />
       <File FileName="Droid/Properties/AndroidManifest.xml" Line="1" Column="1" />
       <File FileName="Droid/MainActivity.cs" Line="1" Column="1" />
-      <File FileName="maptest/SearchPage.cs" Line="1" Column="1" />
-      <File FileName="maptest/Toolbar.cs" Line="1" Column="1" />
-      <File FileName="maptest/WallPage.cs" Line="1" Column="1" />
-      <File FileName="maptest/Messages.cs" Line="1" Column="1" />
+      <File FileName="maptest/IStepCounter.cs" Line="11" Column="1" />
+      <File FileName="iOS/ClsStepManager.cs" Line="8" Column="13" />
+      <File FileName="maptest/Toolbar.cs" Line="192" Column="39" />
+      <File FileName="maptest/TestPage.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -25,7 +25,4 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="iOS/util.cs" line="25" offsetX="466" offsetY="360" expression="manager" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <DisabledProjects>
-    <String>Droid/maptest.Droid.csproj</String>
-  </DisabledProjects>
 </Properties>
