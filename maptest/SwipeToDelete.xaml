@@ -10,9 +10,11 @@
 			       	<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"  
 			           Text="Delete" IsDestructive="True" />
 			   </ViewCell.ContextActions> 
+			 
 		      	<StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">	
+		      	<Image WidthRequest="50" HeightRequest="50" Source="{Binding Images}" />
 		      		<StackLayout Padding="5,0,0,0" VerticalOptions="StartAndExpand" Orientation="Vertical">
-			        	<Label Text="{Binding .}" YAlign="Center" FontSize="Medium" />
+			        	<Label Text="{Binding Name}"/>
 			        	<Label Text="Hi bert" YAlign="Center" FontSize="Small" />
 			        </StackLayout>
 		         </StackLayout>
