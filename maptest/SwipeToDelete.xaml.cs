@@ -31,7 +31,7 @@ namespace maptest
 
 			items.Add(new ClsProfileData(){Name="Millard Fillmore",Images="http://www.americanpresidents.org/images/13_150.gif"});
 			items.Add(new ClsProfileData(){Name="Franklin Pierce",Images="http://www.americanpresidents.org/images/14_150.gif"});
-			items.Add(new ClsProfileData(){Name="James Buchanan",Images= "http://www.americanpresidents.org/images/15_150.gif"});
+			//items.Add(new ClsProfileData(){Name="James Buchanan",Images= "http://www.americanpresidents.org/images/15_150.gif"});
 
 
 //			items.Add(new ClsProfileData(){});
