@@ -8,6 +8,10 @@ namespace maptest.UITests
 {
     public class AppInitializer
     {
+
+		// Test change for Git
+
+
         public static IApp StartApp (Platform platform)
         {
             if (platform == Platform.Android) {
